@@ -30,3 +30,19 @@ const questions = [
         corrent: 2,
     }
 ]
+
+
+//Находим элеметы
+
+const headerContainer = document.querySelector('#header')
+const listContainer = document.querySelector('#list')
+const submitBtn = document.querySelector('#submit')
+
+headerContainer.innerHTML = '';
+
+//Переменные игры
+let score = 0; // Количество правильных ответов
+
+let questionIndex = 0; // Текущий вопрос
+
+

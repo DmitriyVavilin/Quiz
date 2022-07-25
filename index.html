@@ -9,11 +9,38 @@
 </head>
 <body>
 
-<div class="quiz">
+<div class="quiz" id="quiz">
     <div class="quiz__header">
         <div class="quiz__title">
-            <h1>Заголовок . . .</h1>
+            <h1 class="title">Загружаем Вопрос . . .</h1>
         </div>
+    <ul class="quiz__list" id="list">
+        <li>
+            <label>
+                <input type="radio" class="answer" name="answer">
+                    <span>Ответ ...</span>
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" class="answer" name="answer">
+                    <span>Ответ ...</span>
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" class="answer" name="answer">
+                    <span>Ответ ...</span>
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" class="answer" name="answer">
+                    <span>Ответ ...</span>
+            </label>
+        </li>
+    </ul>
+    <button class="quiz__submit submit" id="submit">Ответить</button>
     </div>
 </div>
 

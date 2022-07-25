@@ -16,10 +16,32 @@ body {
 }
 
 .quiz__header {
+    margin-top: 150px;
+    height: 300px;
+    width:  500px;
+    background-color:steelblue;
     color: #000;
-    font-size: 18px;
-    padding-top: 200px;
-    height: 400px;
-    width: 400px;
+    font-size: 25px;
+    text-align: left;
+}
+
+.title {
+    margin-top: 10px;
     text-align: center;
+}
+
+.quiz__list {
+    list-style: none;
+}
+
+li {
+    margin-left: 10px;
+    margin-top: 13px;
+}
+
+.quiz__submit {
+    margin-top: 13px;
+    border: none;
+    background-color: brown;
+    padding: 10px 30px;
 }

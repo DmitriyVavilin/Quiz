@@ -1,0 +1,17 @@
+body {
+    background-color: bisque;
+}
+
+.quiz {
+    display: flex;
+    justify-content: center;
+}
+
+.quiz__header {
+    color: #000;
+    font-size: 18px;
+    padding-top: 200px;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+}

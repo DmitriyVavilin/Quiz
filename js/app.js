@@ -38,7 +38,6 @@ const headerContainer = document.querySelector('#header')
 const listContainer = document.querySelector('#list')
 const submitBtn = document.querySelector('#submit')
 
-headerContainer.innerHTML = '';
 
 //Переменные игры
 let score = 0; // Количество правильных ответов
@@ -46,3 +45,35 @@ let score = 0; // Количество правильных ответов
 let questionIndex = 0; // Текущий вопрос
 
 
+clearPage()
+showQustions()
+
+function clearPage() {
+    headerContainer.innerHTML = '';
+    listContainer.innerHTML = '';
+}
+
+function showQustions() {
+    //Вопрос
+    const headerTemplate = `<h2 class="title">%title%</h2>`;
+    const title = headerTemplate.replace('%title%', questions[questionIndex]['question'])
+    headerContainer.innerHTML = title;
+
+    // Варианты ответов
+    for(item of questions[questionIndex]['answer']) {
+        console.log(item)
+
+        const questionTemplate =
+         `<li>
+				<label>
+					<input type="radio" class="answer" name="answer" />
+					<span>%answer%</span>
+				</label>
+        </li>`;
+
+     const answerHtml = questionTemplate.replace('%answer%', item )
+     console.log(answerHtml)
+
+     listContainer.innerHTML = answerHtml;
+    }
+}

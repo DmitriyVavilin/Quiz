@@ -8,8 +8,6 @@
 body {
 	font-family: "Noto Sans", sans-serif;
 	font-size: 16px;
-
-	/* https://cssgradient.io/gradient-backgrounds/ */
 	background: #c6ffdd;
 	background: linear-gradient( to right, #f7797d, #fbd786, #c6ffdd );
 

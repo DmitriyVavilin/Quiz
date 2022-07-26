@@ -111,4 +111,38 @@ function checkAnswer() {
 
 function showResults() {
     console.log('showResults started')
+    console.log('score')
+
+    const resultsTemplate = `
+            <h2 class="title">%title%</h2>
+			<h3 class="summary">%message%</h3>
+			<p class="result">%result%</p>
+    `;
+
+    let title, message;
+
+    //Варианты заголовка и текста
+    if(score === questions.length) {
+        title = 'Поздравляем!'
+        message = 'Вы ответили верно на все вопросы!'
+    }else if((score * 100) / questions.length >= 50) {
+        title = 'Не плохой результат!'
+        message = 'Вы дали более половины правильных ответов'
+    }else {
+        title = 'Стоит постараться!'
+        message = 'Пока у Вас меньше половины правильных ответов!'
+    }
+
+    //Результат
+    let result = `${score} из ${questions.length}`
+
+    //Финальный ответ, подстовляем данные в шаблон
+    let finalMessage = resultsTemplate.replace('%title%', title).replace('%message%', message).replace('%result%', result);
+
+    headerContainer.innerHTML = finalMessage;
+
+    //Меняем кнопку на играть снова
+    submitBtn.blur()
+    submitBtn.innerText = 'Играть снова!'
+    submitBtn.onclick = () => history.go()
 }

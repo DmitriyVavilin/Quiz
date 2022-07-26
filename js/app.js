@@ -2,7 +2,7 @@ const questions = [
     {
         question: 'Какой язык работает в браузере?',
         answer: ['Java', 'JavaScript', 'Python', 'C++'],
-        corrent: 4,
+        corrent: 2,
     },
     {
         question: 'Что означает Css?',
@@ -47,6 +47,23 @@ let questionIndex = 0; // Текущий вопрос
 
 clearPage()
 showQustions()
+submitBtn.onclick = checkAnswer;
+
+function checkAnswer() {
+    //Находим выбранную радио кнопку
+    const checkRadio = listContainer.querySelector('input:checked')
+    console.log(checkRadio)
+    //Если ничего не выбрано ничего не делаем.
+    if(!checkRadio){
+        submitBtn.blur();
+        return
+    }
+
+    // Узнаем номер ответа пользователя
+    const userAnswer = parseInt(checkRadio.value)
+    // Если ответил верно увеличиваем число
+    questions[questionIndex]['corrent']
+}
 
 function clearPage() {
     headerContainer.innerHTML = '';
@@ -60,20 +77,19 @@ function showQustions() {
     headerContainer.innerHTML = title;
 
     // Варианты ответов
+    let answerNumber = 1;
     for(item of questions[questionIndex]['answer']) {
-        console.log(item)
-
+        console.log(answerNumber,item)
         const questionTemplate =
          `<li>
 				<label>
-					<input type="radio" class="answer" name="answer" />
+					<input value="%number%" type="radio" class="answer" name="answer" />
 					<span>%answer%</span>
 				</label>
         </li>`;
+     let answerHtml = questionTemplate.replace('%answer%', item ).replace('%number%', item);
 
-     const answerHtml = questionTemplate.replace('%answer%', item )
-     console.log(answerHtml)
-
-     listContainer.innerHTML = answerHtml;
+     listContainer.innerHTML += answerHtml;
+     answerNumber++;
     }
 }

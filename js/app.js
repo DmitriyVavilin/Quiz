@@ -49,22 +49,6 @@ clearPage()
 showQustions()
 submitBtn.onclick = checkAnswer;
 
-function checkAnswer() {
-    //Находим выбранную радио кнопку
-    const checkRadio = listContainer.querySelector('input:checked')
-    console.log(checkRadio)
-    //Если ничего не выбрано ничего не делаем.
-    if(!checkRadio){
-        submitBtn.blur();
-        return
-    }
-
-    // Узнаем номер ответа пользователя
-    const userAnswer = parseInt(checkRadio.value)
-    // Если ответил верно увеличиваем число
-    questions[questionIndex]['corrent']
-}
-
 function clearPage() {
     headerContainer.innerHTML = '';
     listContainer.innerHTML = '';
@@ -79,7 +63,6 @@ function showQustions() {
     // Варианты ответов
     let answerNumber = 1;
     for(item of questions[questionIndex]['answer']) {
-        console.log(answerNumber,item)
         const questionTemplate =
          `<li>
 				<label>
@@ -87,9 +70,45 @@ function showQustions() {
 					<span>%answer%</span>
 				</label>
         </li>`;
-     let answerHtml = questionTemplate.replace('%answer%', item ).replace('%number%', item);
+     const answerHtml = questionTemplate.replace('%answer%', item ).replace('%number%', answerNumber);
 
      listContainer.innerHTML += answerHtml;
      answerNumber++;
     }
+}
+
+function checkAnswer() {
+
+    //Находим выбранную радио кнопку
+    const checkedRadio = listContainer.querySelector('input[type="radio"]:checked')
+    //Если ничего не выбрано ничего не делаем.
+    if(!checkedRadio){
+        submitBtn.blur();
+        return
+    }
+
+    // Узнаем номер ответа пользователя
+    const userAnswer = parseInt(checkedRadio.value)
+    // Если ответил верно увеличиваем число
+   console.log(userAnswer, questions[questionIndex]['corrent'])
+   if(userAnswer === questions[questionIndex]['corrent']) {
+        score++;
+   }
+   console.log('score = ', score)
+
+   if(questionIndex !== questions.length - 1){
+    console.log('Это не последний вопрос')
+    questionIndex++
+    clearPage()
+    showQustions()
+    return;
+   }else {
+    console.log('Это последний вопрос')
+    clearPage()
+    showResults()
+   }
+}
+
+function showResults() {
+    console.log('showResults started')
 }
